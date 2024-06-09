@@ -1,0 +1,291 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ecebeb;
+    flex-direction: column; /* Stack the content vertically */
+    min-height: 100vh; /* Minimum height of the viewport */
+
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #001a27;
+    color: #fff;
+    text-align: right;
+    padding: 1rem 10; /* Adjusted from 20rem to 1rem */
+    z-index: 1000;
+    border-bottom: 2px solid #ffefd6;
+}
+.header nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 1rem; /* Adjust padding as needed */
+    height: 80px; /* Set a fixed height for your header */
+}
+
+.logo-container {
+    position: fixed;
+    left: 0;
+    top: 5;
+}
+
+.footer {
+    position: relative;
+    margin-top: 60px;
+    width: 100%;
+    background-color: #001a27;
+    color: #fff;
+    text-align: left;
+    padding: 1rem 0;
+    border-top: 2px solid #ffefd6;
+}
+
+.all-posts.light,
+.container.light,
+.index-page.light,
+.login-page.light,
+.logout-page.light,
+.protected-page.light,
+.register-page.light {
+     width: 80%;
+    margin: auto;
+    padding: 1rem;
+    padding-top: 120px; /* Adjusted to match the height of your header */
+    background-color: #D7D7D7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    flex: 1; /* This will make the container fill the available space */
+}
+
+.all-posts.dark,
+.container.dark, 
+.index-page.dark,
+.login-page.dark,
+.logout-page.dark,
+.protected-page.dark,
+.register-page.dark {
+    width: 80%;
+    margin: auto;
+    padding: 1rem;
+    padding-top: 120px; /* Adjusted to match the height of your header */
+    background-color: #696969;
+    color: #a4ac77;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    flex: 1; /* This will make the container fill the available space */
+}
+.view-post-page.light p {
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: #eff8bec5;
+}
+.view-post-page.dark p {
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: #15105ec5;
+}
+
+h1.light {
+    text-align: center;
+    color: #333;
+}
+h1.dark {
+    text-align: center;
+    color: #ebe6e6;
+}
+h2.light {
+    text-align: left;
+    color: #333;
+}
+h2.dark {
+    text-align: left;
+    color: #dfd8d8;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li.light {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    color: #001a27;
+    background-color: #f9f9f9;
+}
+
+li.dark {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    color: #a4ac77;
+    background-color: #5a5a5a;
+}
+
+
+.menu-button,
+.default-button {
+    display: inline-block;
+    margin: 0rem 0;
+    margin-left: 1rem;
+    padding: 0.5rem 1rem; /* Adjust padding to match form button */
+    background-color: #ffefd6;
+    color: #2b2c2c;
+    text-decoration: none;
+    border-radius: 4px;
+    height: 15px; /* Set a fixed height to match form button */
+    line-height: 15px; /* Adjust line height to vertically center the text */
+}
+
+form label {
+    display: block;
+    margin-top: 1rem;
+}
+
+form input.light,
+form textarea.light {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    background-color: #fff;
+    color: #333;
+}
+
+form input.dark,
+form textarea.dark {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    background-color: #333;
+    color: #a4ac77;
+}
+
+form button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #ffefd6;
+    color: #2b2c2c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggle {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    transition: .2s;
+    margin-top: 1rem;
+    margin-right: 1rem; 
+    margin-bottom: 1rem;
+    margin-left: 1rem; /* Add space between toggle and menu items */
+    align-self: center; /* Align toggle vertically */
+}
+#toggle {
+    display: none;
+}
+.toggle label {
+    display: flex;
+    align-items: center;
+    height: 80%; /* Match the height of the header */
+}
+#toggleInput {
+    position: absolute;
+    left: -9999px;
+}
+
+.toggle i {
+    width: 50%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 1;
+}
+
+.toggle .ball {
+    position: absolute;
+    width: 20px; /* Adjust width if necessary */
+    height: 20px; /* Adjust height if necessary */
+    left: 30%; /* Center the ball horizontally */
+    top: 50%; /* Center the ball vertically */
+    transform: translate(-50%, -50%); /* Offset the ball by half its size */
+    border-radius: 50%;
+    transition: .3s ease-out;
+    background: #000000; /* Adjust color if necessary */
+}
+
+.light {
+    background: #ffefd6;
+    color: #001a27;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.light .toggle {
+    background: linear-gradient(145deg, #fdfdfd, #252525da);
+    box-shadow: 3px 3px 4px #e6e6e6,
+                -3px -3px 4px #ffffff;
+}
+
+.light .toggle .bxs-sun {
+    color: #fafafa;
+}
+
+.light .toggle .bx-moon {
+    color: #151d2a;
+}
+
+.light .toggle .ball {
+    background: #151d2a;
+    height: 20px;
+}
+
+.dark {
+    background: #5aacd4;
+    background-color: #001a27;
+    color: #ffefd6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.dark .toggle {
+    background: linear-gradient(145deg, #fdfdfd, #252525da);
+    box-shadow: 3px 3px 3px #0e131b,
+                -3px -3px 3px #1c2739;
+}
+
+.dark .toggle .bx-sun {
+    color: #fafafa;
+}
+
+.dark .toggle .bxs-moon {
+    color: #151d2a;
+}
+
+.dark .toggle .ball {
+    transform: translateX(30px) translate(-50%, -50%);
+}

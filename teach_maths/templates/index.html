@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="index-page">
+    <h1>Welcome</h1>
+    {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.username }}.</p>
+        <a class="default-button" href="{% url 'all_tasks' %}">View tasks</a>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a class="default-button" href="{% url 'login' %}">Login</a>
+        <a class="default-button" href="{% url 'register' %}">Register</a>
+    {% endif %}
+</div>
+{% endblock %}

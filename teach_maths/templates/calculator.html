@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" id="calculator-form">
+    {% csrf_token %}
+    <input type="hidden" name="operand1" id="operand1">
+    <input type="hidden" name="operator" id="operator">
+    <input type="hidden" name="operand2" id="operand2">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        .display {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: right;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .button-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .button {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            text-align: center;
+            background-color: lightgrey;
+            border: none;
+            cursor: pointer;
+        }
+        .button:last-child {
+            margin-right: 0;
+        }
+    </style>
+    <div class="calculator">
+        <input type="text" class="display" id="display" readonly>
+            <div class="button-row">
+                <button class="button">7</button>
+                <button class="button">8</button>
+                <button class="button">9</button>
+                <button class="button">+</button>
+            </div>
+            <div class="button-row">
+                <button class="button">4</button>
+                <button class="button">5</button>
+                <button class="button">6</button>
+                <button class="button">-</button>
+            </div>        <div class="button-row">
+                <button class="button">1</button>
+                <button class="button">2</button>
+                <button class="button">3</button>
+                <button class="button">*</button>
+            </div>
+            <div class="button-row">
+                <button class="button">0</button>
+                <button class="button">.</button>
+                <button class="button">C</button>
+                <button class="button">/</button>
+                <button class="button">=</button>
+            </div>
+    </div>
+</form>
+
+{% if result %}
+    <p>Result: {{ result }}</p>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var display = document.getElementById('display');
+        var operand1 = document.getElementById('operand1');
+        var operator = document.getElementById('operator');
+        var operand2 = document.getElementById('operand2');
+        var buttons = document.querySelectorAll('.button');
+        var result = '{{ result }}'; // Get the result from the Django template
+    
+        // If there is a result, display it in the text box
+        if (result && result !== 'None') {
+            display.value = result;
+        }
+    
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                var value = this.textContent;
+                if (['+', '-', '*', '/'].includes(value)) {
+                    if (operator.value === '') {
+                        operand1.value = display.value;
+                        operator.value = value;
+                        display.value += value; // Display the operator
+                    }
+                } else if (value === 'C') {
+                    display.value = ''; // Clear the display
+                    operand1.value = '';
+                    operator.value = '';
+                    operand2.value = '';
+                } else if (value === '=') {
+                    operand2.value = display.value.split(operator.value)[1];
+                    document.getElementById('calculator-form').submit();
+                } else {
+                    display.value += value; // Add the value to the display
+                }
+                event.preventDefault(); // Prevent form submission for all buttons except '='
+            });
+        });
+    });
+</script>
+{% endblock %}

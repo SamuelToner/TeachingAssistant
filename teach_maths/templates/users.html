@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} Users{% endblock %}
+
+{% block content %}
+<div class="index-page">
+    <h1>All Users</h1>
+    <ul>
+        {% for user in users %}
+        <li>
+            {{ user.username }} - Joined on {{ user.date_joined }}
+            {% if is_teacher %}
+              <a class="menu-button" href="{% url 'view_student_results' user.id %}">View Results</a>
+              <a class="menu-button" href="{% url 'delete_user_view' user.id %}">Delete User</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

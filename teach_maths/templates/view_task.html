@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ task.title }}{% endblock %}
+
+{% block content %}
+<a class="menu-button" href="{% url 'student_task_view' task.id %}">Start task</a>
+{% if is_teacher %}
+    <a class="menu-button" href="{% url 'edit_task' task.id %}">Edit task</a>
+    <a class="menu-button" href="{% url 'delete_task' task.id %}">Delete task</a>
+{% endif %}
+
+<a class="menu-button" href="{% url 'all_tasks' %}">Back to tasks List</a>
+<div class="view-task-page">
+    <h2>{{ task.title }}</h2>    
+    <p>{{ task.question|safe }}</p>
+    <a class="menu-button" href="{% url 'student_task_view' task.id %}">Start task</a>
+    {% if is_teacher %}
+        <a class="menu-button" href="{% url 'edit_task' task.id %}">Edit task</a>
+        <a class="menu-button" href="{% url 'delete_task' task.id %}">Delete task</a>
+    {% endif %}
+
+    <a class="menu-button" href="{% url 'all_tasks' %}">Back to tasks List</a>
+</div>
+{% endblock %}

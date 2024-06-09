@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}All Results{% endblock %}
+
+{% block content %}
+<div class="all-results-page">
+    <h1>Results for {{ student.username }}</h1>
+    {% for task in tasks_with_results %}
+    <div>
+        <strong>Task:</strong> {{ task.title }}
+        <ul>
+            {% for result in task.user_results %}
+            <li>
+                <strong>Question:</strong> {{ result.question }}<br>
+                <strong>Your Answer:</strong> {{ result.student_answer }}<br>
+                <strong>Result:</strong> {{ result.result }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

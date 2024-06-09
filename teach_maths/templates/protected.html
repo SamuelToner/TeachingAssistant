@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="protected-page">
+    <h1>Protected Page</h1>
+    <p>You are viewing a protected page.</p>
+    <a class="default-button" href="{% url 'index' %}">Return to Home</a>
+</div>
+{% endblock %}

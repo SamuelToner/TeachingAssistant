@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="not-manager-page">
+    <h1>You must be a manager to delete tasks.</h1>
+    <a class="menu-button" href="{% url 'all' %}">Go back.</a>
+</div>
+{% endblock %}

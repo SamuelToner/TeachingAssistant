@@ -1,0 +1,15 @@
+{% extends "posts/base.html" %}
+
+{% block title %} Confirm Delete {% endblock %}
+
+{% block content %}
+<div class="delete-page">
+    <h1>Are you sure you want to delete this user?</h1>
+    <p>{{ user.username }} - Joined on {{ user.date_joined }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form><br>
+    <a class="menu-button" href="{% url 'user_list' %}">Cancel</a>
+</div>
+{% endblock %}

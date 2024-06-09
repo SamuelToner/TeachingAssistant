@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Authentication</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+   {% include "partials/header.html" %}
+   {% if messages %}
+   <ul class="messages">
+       {% for message in messages %}
+           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+       {% endfor %}
+   </ul>
+    {% endif %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="{% static 'interact.js' %}"></script>
+</body>
+<div class="footer">   
+    <p>&copy; Django, Python, HTML, CSS, Js project</p>
+</div>
+</html>

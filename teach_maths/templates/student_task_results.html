@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Task Results{% endblock %}
+
+{% block content %}
+<div class="task-results-page">
+    <h1>Results</h1>
+    <ul>
+        {% for qa_result in qa_results %}
+        <li><strong>Question:</strong> {{ qa_result.question }} - <strong>Result:</strong> {{ qa_result.result }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

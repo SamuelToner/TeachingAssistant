@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Student Task{% endblock %}
+
+{% block content %}
+<div class="student-task-page">
+    <h1>{{ task.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for qa in question_answers %}
+        <label for="question">{{ qa.question }}</label>
+        <textarea id="answer" name="answer"></textarea><br>
+        {% endfor %}
+        <button type="submit">Submit Answers</button>
+    </form>   
+</div>
+{% endblock %}

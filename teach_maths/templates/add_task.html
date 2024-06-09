@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<div class="add-post-page">
+    <h1>Add a New Task</h1>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="title"></textarea>
+        <script>
+            function addQuestionAnswerFields() {
+                var container = document.getElementById('qa-container');
+                var questionInput = document.createElement('textarea');
+                questionInput.name = 'question';
+                var answerInput = document.createElement('textarea');
+                answerInput.name = 'answer';
+                container.appendChild(questionInput);
+                container.appendChild(answerInput);
+            }
+        </script>
+
+        <div id="qa-container">
+            <!-- Initial question/answer fields -->
+            <textarea name="question"></textarea>
+            <textarea name="answer"></textarea>
+        </div>
+        <button type="button" onclick="addQuestionAnswerFields()">Add more questions/answers</button>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}
