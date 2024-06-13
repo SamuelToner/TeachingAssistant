@@ -1,20 +1,34 @@
 {% extends "base.html" %}
 
-{% block title %}Edit Post{% endblock %}
+{% block title %}Edit Task{% endblock %}
 
 {% block content %}
 <div class="edit-task-page">
-    <h1>Edit Post</h1>
+    <h1>Edit Task</h1>
     <form method="post">
         {% csrf_token %}
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" value="{{ task.title }}"><br>
-        {% for qa in question_answers %}
-        <label for="question">Question:</label>
-        <textarea id="question" name="question">{{ qa.question }}</textarea><br>
-        <label for="answer">Answer:</label>
-        <textarea id="answer" name="answer">{{ qa.answer }}</textarea><br>
-        {% endfor %}
+        <style>
+            .qa-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .qa-row textarea {
+                margin: 5px;
+            }
+        </style>
+        <label for="title">Task Title:</label>
+        <textarea id="title" name="title">{{ task.title }}</textarea>
+        <div id="qa-container">
+            {% for qa in question_answers %}
+            <div class="qa-row">
+                <label for="question">Question:</label>
+                <textarea id="question" name="question">{{ qa.question }}</textarea>
+                <label for="answer">=</label>
+                <textarea id="answer" name="answer">{{ qa.answer }}</textarea>
+            </div>
+            {% endfor %}
+        </div>
         <button type="submit">Save Changes</button>
         <a class="menu-button" href="{% url 'view_task' task.id %}">Cancel</a>
     </form>   

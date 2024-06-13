@@ -7,23 +7,48 @@
     <h1>Add a New Task</h1>
     <form method="post">
         {% csrf_token %}
-        <textarea name="title"></textarea>
+        <label for="title">Task Title:</label>
+        <textarea id="title" name="title"></textarea>
         <script>
             function addQuestionAnswerFields() {
                 var container = document.getElementById('qa-container');
+                var qaDiv = document.createElement('div');
+                qaDiv.className = 'qa-row';
+                var questionLabel = document.createElement('label');
+                questionLabel.textContent = 'Question:';
                 var questionInput = document.createElement('textarea');
                 questionInput.name = 'question';
+                var equalsSign = document.createElement('span');
+                equalsSign.textContent = '=';
                 var answerInput = document.createElement('textarea');
                 answerInput.name = 'answer';
-                container.appendChild(questionInput);
-                container.appendChild(answerInput);
+                qaDiv.appendChild(questionLabel);
+                qaDiv.appendChild(questionInput);
+                qaDiv.appendChild(equalsSign);
+                qaDiv.appendChild(answerInput);
+                container.appendChild(qaDiv);
             }
         </script>
 
+        <style>
+            .qa-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .qa-row textarea {
+                margin: 5px;
+            }
+        </style>
+
         <div id="qa-container">
             <!-- Initial question/answer fields -->
-            <textarea name="question"></textarea>
-            <textarea name="answer"></textarea>
+            <div class="qa-row">
+                <label for="question">Question:</label>
+                <textarea id="question" name="question"></textarea>
+                <label for="answer">=</label>
+                <textarea id="answer" name="answer"></textarea>
+            </div>
         </div>
         <button type="button" onclick="addQuestionAnswerFields()">Add more questions/answers</button>
         <input type="submit" value="Submit">

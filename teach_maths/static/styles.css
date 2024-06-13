@@ -12,6 +12,15 @@ body {
 
 }
 
+.qa-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.qa-row textarea {
+    margin: 5px;
+}
+
 .header {
     position: fixed;
     top: 0;

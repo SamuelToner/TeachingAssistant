@@ -1,12 +1,12 @@
-{% extends "posts/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="delete-post-page">
-    <h1>Are you sure you want to delete {{ post.title }}?</h1>
+<div class="delete-task-page">
+    <h1>Are you sure you want to delete {{ task.title }}?</h1>
     <form method="POST">
         {% csrf_token %}
         <button type="submit">Confirm Delete</button>
     </form><br>
-    <a class="menu-button" href="{% url 'view_post' post.id %}">No, take me back.</a>
+    <a class="menu-button" href="{% url 'view_task' task.id %}">No, take me back.</a>
 </div>
 {% endblock %}

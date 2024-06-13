@@ -11,7 +11,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ["username", "email", "password1", "password2"]
 
 
 class EditProfileForm(UserChangeForm):
@@ -19,18 +19,17 @@ class EditProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email']
+        fields = ["username", "first_name", "last_name", "email"]
 
 
 class CalculatorForm(forms.Form):
     OPERATOR_CHOICES = [
-        ('+', 'Add'),
-        ('-', 'Subtract'),
-        ('*', 'Multiply'),
-        ('/', 'Divide'),
+        ("+", "Add"),
+        ("-", "Subtract"),
+        ("*", "Multiply"),
+        ("/", "Divide"),
     ]
 
     operand1 = forms.DecimalField()
     operator = forms.ChoiceField(choices=OPERATOR_CHOICES)
     operand2 = forms.DecimalField()
-

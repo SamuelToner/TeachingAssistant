@@ -82,11 +82,11 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var display = document.getElementById('display');
+        var buttons = document.querySelectorAll('.button');
+        var result = '{{ result }}'; // Get the result from the Django template
         var operand1 = document.getElementById('operand1');
         var operator = document.getElementById('operator');
         var operand2 = document.getElementById('operand2');
-        var buttons = document.querySelectorAll('.button');
-        var result = '{{ result }}'; // Get the result from the Django template
     
         // If there is a result, display it in the text box
         if (result && result !== 'None') {
@@ -97,7 +97,7 @@
             button.addEventListener('click', function(event) {
                 var value = this.textContent;
                 if (['+', '-', '*', '/'].includes(value)) {
-                    if (operator.value === '') {
+                    if (display.value !== '' && operator.value === '') {
                         operand1.value = display.value;
                         operator.value = value;
                         display.value += value; // Display the operator
@@ -108,8 +108,11 @@
                     operator.value = '';
                     operand2.value = '';
                 } else if (value === '=') {
-                    operand2.value = display.value.split(operator.value)[1];
-                    document.getElementById('calculator-form').submit();
+                    if (display.value !== '' && operand1.value !== '' && operator.value !== '') {
+                        operand2.value = display.value.split(operator.value)[1];
+                        // When "=" is pressed, submit the form
+                        document.getElementById('calculator-form').submit();
+                    }
                 } else {
                     display.value += value; // Add the value to the display
                 }

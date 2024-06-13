@@ -3,14 +3,28 @@
 {% block title %}Student Task{% endblock %}
 
 {% block content %}
+<style>
+    .qa-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .qa-row textarea {
+        margin: 5px;
+    }
+</style>
 <div class="student-task-page">
     <h1>{{ task.title }}</h1>
     <form method="post">
         {% csrf_token %}
-        {% for qa in question_answers %}
-        <label for="question">{{ qa.question }}</label>
-        <textarea id="answer" name="answer"></textarea><br>
-        {% endfor %}
+        <div id="qa-container">
+            {% for qa in question_answers %}
+            <div class="qa-row">
+                <label for="question">{{ qa.question }}=</label>
+                <textarea id="answer" name="answer"></textarea>
+            </div>
+            {% endfor %}
+        </div>
         <button type="submit">Submit Answers</button>
     </form>   
 </div>
